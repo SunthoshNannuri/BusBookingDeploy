@@ -1,7 +1,7 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" 
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
-  
+
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>Busemployeeing</groupId>
@@ -10,54 +10,47 @@
   <packaging>war</packaging>
 
   <properties>
-    <maven.compiler.source>17</maven.compiler.source>  <!-- Ensuring Java 17 compatibility -->
+    <maven.compiler.source>17</maven.compiler.source>  <!-- Java 17 -->
     <maven.compiler.target>17</maven.compiler.target>
   </properties>
 
   <dependencies>
-
-    <!-- Servlet API (for Java 17+ / Jakarta EE 10) -->
+    <!-- ✅ Correct Servlet API (Java EE) -->
     <dependency>
-      <groupId>jakarta.servlet</groupId>
-      <artifactId>jakarta.servlet-api</artifactId>
-      <version>6.0.0</version>
+      <groupId>javax.servlet</groupId>
+      <artifactId>javax.servlet-api</artifactId>
+      <version>4.0.1</version>
       <scope>provided</scope>
     </dependency>
 
-    <!-- MySQL Connector -->
+    <!-- ✅ MySQL Connector -->
     <dependency>
       <groupId>mysql</groupId>
       <artifactId>mysql-connector-java</artifactId>
       <version>8.0.33</version>
     </dependency>
 
-    <!-- JSP & JSTL Support -->
+    <!-- ✅ JSTL Support (Java EE) -->
     <dependency>
-      <groupId>jakarta.servlet.jsp.jstl</groupId>
-      <artifactId>jakarta.servlet.jsp.jstl-api</artifactId>
-      <version>2.0.0</version>
-    </dependency>
-    
-    <dependency>
-      <groupId>org.glassfish.web</groupId>
-      <artifactId>jakarta.servlet.jsp.jstl</artifactId>
-      <version>2.0.0</version>
+      <groupId>javax.servlet.jsp.jstl</groupId>
+      <artifactId>jstl</artifactId>
+      <version>1.2</version>
     </dependency>
 
   </dependencies>
 
   <build>
     <plugins>
-      <!-- Maven Compiler Plugin -->
+      <!-- ✅ Compiler Plugin for Java 17 -->
       <plugin>
         <artifactId>maven-compiler-plugin</artifactId>
         <version>3.8.1</version>
         <configuration>
-          <release>17</release>  <!-- Ensure Java 17 compatibility -->
+          <release>17</release>  
         </configuration>
       </plugin>
 
-      <!-- Maven WAR Plugin -->
+      <!-- ✅ Maven WAR Plugin -->
       <plugin>
         <artifactId>maven-war-plugin</artifactId>
         <version>3.2.3</version>
