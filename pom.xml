@@ -4,8 +4,8 @@
 
   <modelVersion>4.0.0</modelVersion>
 
-  <groupId>Busemployeeing</groupId>
-  <artifactId>Busemployeeing</artifactId>
+  <groupId>BusBooking</groupId>
+  <artifactId>BusBooking</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <packaging>war</packaging>
 
@@ -15,11 +15,11 @@
   </properties>
 
   <dependencies>
-    <!-- ✅ Correct Servlet API (Java EE) -->
+    <!-- ✅ Correct Servlet API for Java 17 (Jakarta EE) -->
     <dependency>
-      <groupId>javax.servlet</groupId>
-      <artifactId>javax.servlet-api</artifactId>
-      <version>4.0.1</version>
+      <groupId>jakarta.servlet</groupId>
+      <artifactId>jakarta.servlet-api</artifactId>
+      <version>5.0.0</version>  
       <scope>provided</scope>
     </dependency>
 
@@ -30,7 +30,7 @@
       <version>8.0.33</version>
     </dependency>
 
-    <!-- ✅ JSTL Support (Java EE) -->
+    <!-- ✅ JSTL Support -->
     <dependency>
       <groupId>javax.servlet.jsp.jstl</groupId>
       <artifactId>jstl</artifactId>
