@@ -8,7 +8,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.servlet.ServletContext;
+import jakarta.servlet.ServletContext;
 
 import com.book.servlets.Model.LoginModel;
 import com.book.servlets.Model.AllInfoModel;
