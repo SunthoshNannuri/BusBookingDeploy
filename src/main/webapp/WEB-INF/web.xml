@@ -1,72 +1,67 @@
+
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
-         xmlns="http://xmlns.jcp.org/xml/ns/javaee" 
-         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee 
-         http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd" 
-         id="WebApp_ID" version="4.0">
-
-    <display-name>BusBooking</display-name>
-
-    <!-- ✅ Add Servlet Context Listener -->
-    <listener>
-        <listener-class>com.book.servlets.AppConfigListener</listener-class>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd" id="WebApp_ID" version="4.0">
+  <display-name>BusBooking</display-name>
+          <listener>
+        <listener-class>com.book.listeners.AppContextListener</listener-class>
     </listener>
+	  <servlet>
+	 <servlet-name>Login</servlet-name>
+	  <servlet-class>com.book.servlets.LoginServletss</servlet-class>
+	  </servlet>
+	  <servlet-mapping>
+	  <servlet-name>Login</servlet-name>
+	  <url-pattern>/loginpage</url-pattern>
+	  </servlet-mapping>
+  
+  <servlet>
+ <servlet-name>Signup</servlet-name>
+  <servlet-class>com.book.servlets.SignupSevlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  <servlet-name>Signup</servlet-name>
+  <url-pattern>/signup</url-pattern>
+  </servlet-mapping>
+  
+  
+  <servlet>
+ <servlet-name>booked</servlet-name>
+  <servlet-class>com.book.servlets.BookedServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  <servlet-name>booked</servlet-name>
+  <url-pattern>/booked</url-pattern>
+  </servlet-mapping>
+  
+   <servlet>
+ <servlet-name>otp</servlet-name>
+  <servlet-class>com.book.servlets.ScannerServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  <servlet-name>otp</servlet-name>
+  <url-pattern>/otp</url-pattern>
+  </servlet-mapping>
+  
+     <servlet>
+ <servlet-name>otpthere</servlet-name>
+  <servlet-class>com.book.servlets.EnterOtpServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  <servlet-name>otpthere</servlet-name>
+  <url-pattern>/otpthere</url-pattern>
+  </servlet-mapping>
+   
+  <servlet>
+ <servlet-name>view</servlet-name>
+  <servlet-class>com.book.servlets.ViewServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  <servlet-name>view</servlet-name>
+  <url-pattern>/view</url-pattern>
+  </servlet-mapping>
+  
 
-    <!-- ✅ Servlets and Mappings -->
-    <servlet>
-        <servlet-name>Login</servlet-name>
-        <servlet-class>com.book.servlets.LoginServlet</servlet-class> <!-- Fixed class name -->
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>Login</servlet-name>
-        <url-pattern>/loginpage</url-pattern>
-    </servlet-mapping>
-
-    <servlet>
-        <servlet-name>Signup</servlet-name>
-        <servlet-class>com.book.servlets.SignupServlet</servlet-class> <!-- Fixed typo -->
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>Signup</servlet-name>
-        <url-pattern>/signup</url-pattern>
-    </servlet-mapping>
-
-    <servlet>
-        <servlet-name>booked</servlet-name>
-        <servlet-class>com.book.servlets.BookedServlet</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>booked</servlet-name>
-        <url-pattern>/booked</url-pattern>
-    </servlet-mapping>
-
-    <servlet>
-        <servlet-name>otp</servlet-name>
-        <servlet-class>com.book.servlets.ScannerServlet</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>otp</servlet-name>
-        <url-pattern>/otp</url-pattern>
-    </servlet-mapping>
-
-    <servlet>
-        <servlet-name>otpthere</servlet-name>
-        <servlet-class>com.book.servlets.EnterOtpServlet</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>otpthere</servlet-name>
-        <url-pattern>/otpthere</url-pattern>
-    </servlet-mapping>
-
-    <servlet>
-        <servlet-name>view</servlet-name>
-        <servlet-class>com.book.servlets.ViewServlet</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>view</servlet-name>
-        <url-pattern>/view</url-pattern>
-    </servlet-mapping>
-
+  
     <servlet>
         <servlet-name>truncate</servlet-name>
         <servlet-class>com.book.servlets.TruncateServlet</servlet-class>
@@ -76,29 +71,38 @@
         <url-pattern>/truncate</url-pattern>
     </servlet-mapping>
 
-    <servlet>
-        <servlet-name>HealthCheckServlet</servlet-name>
-        <servlet-class>com.book.servlets.HealthCheckServlet</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>HealthCheckServlet</servlet-name>
-        <url-pattern>/health</url-pattern>
-    </servlet-mapping>
+<servlet>
+    <servlet-name>HealthCheckServlet</servlet-name>
+    <servlet-class>com.book.servlets.HealthCheckServlet</servlet-class>
+</servlet>
+<servlet-mapping>
+    <servlet-name>HealthCheckServlet</servlet-name>
+    <url-pattern>/health</url-pattern>
+</servlet-mapping>
+ <session-config>
+        <session-timeout>30</session-timeout>  <!-- Timeout in minutes -->
+    </session-config>
 
-    <!-- ✅ Database Configuration Parameters -->
-    <context-param>
-        <param-name>url</param-name>
-        <param-value>jdbc:mysql://roundhouse.proxy.rlwy.net:12345/railway</param-value>
-    </context-param>
+    <!-- ✅ Welcome Page Configuration -->
+    <welcome-file-list>
+        <welcome-file>index.html</welcome-file>  <!-- Change as needed -->
+    </welcome-file-list>
 
-    <context-param>
-        <param-name>username</param-name>
-        <param-value>root</param-value>
-    </context-param>
+<context-param>
+    <param-name>url</param-name>
+    <param-value>jdbc:mysql://roundhouse.proxy.rlwy.net:12345/railway</param-value>
+</context-param>
 
-    <context-param>
-        <param-name>password</param-name>
-        <param-value>p@ssword</param-value>
-    </context-param>
+<context-param>
+    <param-name>username</param-name>
+    <param-value>root</param-value>
+</context-param>
 
-</web-app>
+<context-param>
+    <param-name>password</param-name>
+    <param-value>p@ssword</param-value>
+</context-param>
+
+  </web-app>
+
+any this is missing
