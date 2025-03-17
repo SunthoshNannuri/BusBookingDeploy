@@ -17,16 +17,17 @@ import com.book.servlets.Model.Dbdetails;
 public class SignupSevlet extends HttpServlet {
 
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		ServletContext ctx = getServletContext();
-		String urlsql = ctx.getInitParameter("url");
-		String usernamesql = ctx.getInitParameter("username");
-		String passwordsql = ctx.getInitParameter("password");
+		ServletContext context = getServletContext(); 
+        String urlsql = context.getInitParameter("url");
+        String usernamesql = context.getInitParameter("username");
+        String passwordsql = context.getInitParameter("password");
 
-		Dbdetails db = new Dbdetails();
-		db.setUrl(urlsql);
-		db.setUsername(usernamesql);
-		db.setPassword(passwordsql);
-
+        // Store in Object
+        Dbdetails db = new Dbdetails();
+        db.setUrl(urlsql);
+        db.setUsername(usernamesql);
+        db.setPassword(passwordsql);
+        
 		String username = req.getParameter("username");
 		String email = req.getParameter("email");
 		String password = req.getParameter("password");

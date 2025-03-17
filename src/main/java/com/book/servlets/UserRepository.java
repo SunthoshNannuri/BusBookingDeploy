@@ -73,6 +73,7 @@ public class UserRepository {
 	public String details(String username, String password, String from, String to, String name,
 			 String email, String number,String gender,String seatno,String date,Dbdetails db) {
 		try {
+			
 			// SQL query with placeholders (?)
 			String query = "INSERT INTO dupli(username, password, fromloc, toloc, name, email, number, gender, seatNo,date) "
 					+ "VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?,?)";
@@ -109,13 +110,13 @@ public class UserRepository {
 		return "yes";
 	}
 
-	public List<DetailsModel> getuser() {
+	public List<DetailsModel> getuser(Dbdetails db) {
 
 		List<DetailsModel> list = new ArrayList<DetailsModel>();
 		String query = "select * from duplicatetable";
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
-			Connection con = DriverManager.getConnection("jdbc:mysql:///BusUserdetails", "root", "root");
+			Connection con = DriverManager.getConnection(db.getUrl(), db.getUsername(), db.getPassword());
 			Statement st = con.createStatement();
 			ResultSet rs = st.executeQuery(query);
 			while (rs.next()) {
@@ -139,7 +140,7 @@ public class UserRepository {
 		List<AllInfoModel> list = new ArrayList<AllInfoModel>();
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
-			Connection con = DriverManager.getConnection("jdbc:mysql:///BusUserdetails", "root", "root");
+			Connection con = DriverManager.getConnection("jdbc:mysql:///busbooking", "root", "root");
 			Statement st = con.createStatement();
 			ResultSet rs = st.executeQuery(query);
 			while (rs.next()) {
@@ -163,11 +164,11 @@ public class UserRepository {
 
 	}
 
-	public String truncate() {
+	public String truncate(Dbdetails db) {
 		String query = "truncate duplicatetable";
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
-			Connection con = DriverManager.getConnection("jdbc:mysql:///BusUserdetails", "root", "root");
+			Connection con = DriverManager.getConnection(db.getUrl(), db.getUsername(), db.getPassword());
 			PreparedStatement pr = con.prepareStatement(query);
 			pr.executeUpdate();
 
@@ -179,13 +180,12 @@ public class UserRepository {
 
 	}
 
-	public List<GetAllModel> getAllData(String username,String password) {
+	public List<GetAllModel> getAllData(String username,String password, Dbdetails db) {
 		List<GetAllModel> list = new ArrayList<GetAllModel>();
-		String query = "select * from dupli where username='" + username + "' and password='" + password + "' ORDER BY id DESC LIMIT 1";
+		String query = "select * from dupli where username='" + username + "' and password='" + password + "'";
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
-			Connection con = DriverManager.getConnection("jdbc:mysql:///bususerdetails", "root", "root");
-			Statement st = con.createStatement();
+			Connection con = DriverManager.getConnection(db.getUrl(), db.getUsername(), db.getPassword());			Statement st = con.createStatement();
 			ResultSet rs = st.executeQuery(query);
 			while (rs.next()) {
 				GetAllModel gall = new GetAllModel();

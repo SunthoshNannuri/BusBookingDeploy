@@ -84,11 +84,18 @@ button:disabled {
 
 </head>
 <body>
-<input type="text" id="email" value=${email}>
-<input type="text" id="name" value=${name}>
+
+
 	<img alt="" src="phonepe.png">
 	<form action="otp" method="post" onsubmit="return getotp(event)">
-	
+	<input type="text" id="name" name="name" value="${requestScope.name}">
+<input type="text" id="gender" name="gender" value="${requestScope.gender}">
+<input type="email" id="email" name="email" value="${requestScope.email}">
+<input type="text" id="phone" name="phone" value="${requestScope.phone}">
+<input type="text" id="from" name="from" value="${requestScope.from}">
+<input type="text" id="to" name="to" value="${requestScope.to}">
+<input type="text" id="seat" name="seat" value="${requestScope.seat}">
+<input type="text" id="date" name="date" value="${requestScope.date}">
 	<input type="text" name="otp"  id="otp" value="" style="display:none">
 <br>
 <br>

@@ -67,20 +67,28 @@
         <url-pattern>/truncate</url-pattern>
     </servlet-mapping>
 
+<servlet>
+    <servlet-name>HealthCheckServlet</servlet-name>
+    <servlet-class>com.book.servlets.HealthCheckServlet</servlet-class>
+</servlet>
+<servlet-mapping>
+    <servlet-name>HealthCheckServlet</servlet-name>
+    <url-pattern>/health</url-pattern>
+</servlet-mapping>
 
-  
-  <context-param>
- <param-name>url</param-name>
- <param-value>jdbc:mysql:///BusUserdetails</param-value>
-  </context-param>
-  
-   <context-param>
- <param-name>username</param-name>
- <param-value>root</param-value>
-  </context-param>
-  
-   <context-param>
- <param-name>password</param-name>
- <param-value>root</param-value>
-  </context-param>
+<context-param>
+    <param-name>url</param-name>
+    <param-value>jdbc:mysql://roundhouse.proxy.rlwy.net:12345/railway</param-value>
+</context-param>
+
+<context-param>
+    <param-name>username</param-name>
+    <param-value>root</param-value>
+</context-param>
+
+<context-param>
+    <param-name>password</param-name>
+    <param-value>p@ssword</param-value>
+</context-param>
+
   </web-app>
