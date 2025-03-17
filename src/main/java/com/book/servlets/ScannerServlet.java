@@ -9,7 +9,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
+import java.util.Scanner;
 import com.book.servlets.Model.Dbdetails;
 import com.book.servlets.Model.DetailsModel;
 
